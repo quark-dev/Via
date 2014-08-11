@@ -11,7 +11,7 @@ This is the very first version, use with caution !
 
 
 ### Installation with composer
-If you composer is not installed [download Composer](https://getcomposer.org/)
+If composer is not installed [download Composer](https://getcomposer.org/).
 
  * `composer require bafs/via dev-master`
  * `composer install`
@@ -19,6 +19,24 @@ If you composer is not installed [download Composer](https://getcomposer.org/)
 
 
 ## Using Via
+
+#### Complete Hello World example
+
+```php
+<?php
+
+use Via\Router;
+
+require 'vendor/autoload.php';
+
+$app = new Router();
+
+$app->get('', function($req, $res) {
+    $res('Hello world !');
+});
+
+$app(); // run the router
+```
 
 #### Simple route
 
@@ -28,8 +46,6 @@ $app->get('/test', function($req, $res) {
 	$res('Test OK'); // print 'Test OK'
 	$res->send('Test OK'); // Same as above
 });
-
-$app(); // run the router
 ```
 
 #### With parameters
