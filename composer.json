@@ -2,6 +2,7 @@
 	"name": "bafs/via",
 	"description": "Via is a simple and scalable router inspired by expressjs",
 	"version": "0.1.0",
+	"keywords": ["router", "via"],
 	"authors": [
 		{
 			"name": "Fabien Sa",
