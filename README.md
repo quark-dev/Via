@@ -20,69 +20,80 @@ This is the very first version, use with caution !
 
 #### Simple route
 
-	<?php
-	$app->get('/test', function($req, $res) {
-		$res('Test OK'); // print 'Test OK'
-		$res->send('Test OK'); // Same as above
-	});
+```php
+<?php
+$app->get('/test', function($req, $res) {
+	$res('Test OK'); // print 'Test OK'
+	$res->send('Test OK'); // Same as above
+});
 
-	$app(); // run the router
-
+$app(); // run the router
+```
 
 #### With parameters
 
-	<?php
-	$app->post('/test/:var', function($req, $res) {
-		$res($req('var'));
-		$res($req->params->var)); // Same as above
-	});
+```php
+<?php
+$app->post('/test/:var', function($req, $res) {
+	$res($req('var'));
+	$res($req->params->var)); // Same as above
+});
+```
 
 
 #### Multiple methods
 
-	<?php
-	$app->on(['GET', 'POST'], '/test', function() {
-		// ...
-	});
+```php
+<?php
+$app->on(['GET', 'POST'], '/test', function() {
+	// ...
+});
+```
 
 
 #### Match multiple routes
 
-	<?php
-	// Match both (print '12')
-	$app->get('/test', function($req, $res, $next) {
-		$res('1');
-		$next(); // Continue to test next routes
-	});
+```php
+<?php
+// Match both (print '12')
+$app->get('/test', function($req, $res, $next) {
+	$res('1');
+	$next(); // Continue to test next routes
+});
 
-	$app->get('/test', function($req, $res) {
-		$res('2');
-	});
+$app->get('/test', function($req, $res) {
+	$res('2');
+});
+```
 
 
 #### Using namespaces
 
-	<?php
-	$app->with('/sub', function($app) {
+```php
+<?php
+$app->with('/sub', function($app) {
 
-		$app->with('/a', function($app) {
-			// inside /sub/a
+	$app->with('/a', function($app) {
+		// inside /sub/a
 
-			$app->get('/test', function($req, $res){
-				// match /sub/a/test
-			});
+		$app->get('/test', function($req, $res){
+			// match /sub/a/test
 		});
 	});
+});
+```
 
 
 #### Use basic Via engine
 
-	<?php
-	$app->get('/test', function($req, $res, $next) {
-		// You can use $title inside view.html
-		$html = $res->render('view.html', ['title' => 'My Title']);
-		$res->send($html);
-	});
+```php
+<?php
+$app->get('/test', function($req, $res, $next) {
+	// You can use $title inside view.html
+	$html = $res->render('view.html', ['title' => 'My Title']);
+	$res->send($html);
+});
+```
 
 
 
@@ -90,41 +101,45 @@ This is the very first version, use with caution !
 
 #### `Using` function will call $next() automatically
 
-	<?php
-	$app->using(function($req, $res) {
-		$res->contentType('text/plain');
-		$res->set('X-Custom-Header', 'test');
-		// will continue to next route
-	});
+```php
+<?php
+$app->using(function($req, $res) {
+	$res->contentType('text/plain');
+	$res->set('X-Custom-Header', 'test');
+	// will continue to next route
+});
 
-	// ...
+// ...
+```
 
 
 #### With specific method
 
-	<?php
+```php
+<?php
+class A {
+	function b($req, $res) {...}
+}
 
-	class A {
-		function b($req, $res) {...}
-	}
-
-	$app->get('/', 'A@b');
+$app->get('/', 'A@b');
+```
 
 
 #### Handle a controller
 
-	<?php
+```php
+<?php
+class MyController {
+	function getUser($req, $res) {...}
 
-	class MyController {
-		function getUser($req, $res) {...}
+	function postUser($req, $res) {...}
+}
 
-		function postUser($req, $res) {...}
-	}
+$app->get('/test/@@', 'MyController');
 
-	$app->get('/test/@@', 'MyController');
-
-	// GET /test/user will call "getUser"
-	// POST /test/user will call "postUser"
+// GET /test/user will call "getUser"
+// POST /test/user will call "postUser"
+```
 
 
 ---
