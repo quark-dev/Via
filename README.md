@@ -41,7 +41,6 @@ $app(); // run the router
 #### Simple route
 
 ```php
-<?php
 $app->get('/test', function($req, $res) {
 	$res('Test OK'); // print 'Test OK'
 	$res->send('Test OK'); // Same as above
@@ -51,7 +50,6 @@ $app->get('/test', function($req, $res) {
 #### With parameters
 
 ```php
-<?php
 $app->post('/test/:var', function($req, $res) {
 	$res($req('var'));
 	$res($req->params->var)); // Same as above
@@ -62,7 +60,6 @@ $app->post('/test/:var', function($req, $res) {
 #### Multiple methods
 
 ```php
-<?php
 $app->on(['GET', 'POST'], '/test', function() {
 	// ...
 });
@@ -72,7 +69,6 @@ $app->on(['GET', 'POST'], '/test', function() {
 #### Match multiple routes
 
 ```php
-<?php
 // Match both (print '12')
 $app->get('/test', function($req, $res, $next) {
 	$res('1');
@@ -88,7 +84,6 @@ $app->get('/test', function($req, $res) {
 #### Using namespaces
 
 ```php
-<?php
 $app->with('/sub', function($app) {
 
 	$app->with('/a', function($app) {
@@ -105,7 +100,6 @@ $app->with('/sub', function($app) {
 #### Use basic Via engine
 
 ```php
-<?php
 $app->get('/test', function($req, $res, $next) {
 	// You can use $title inside view.html
 	$html = $res->render('view.html', ['title' => 'My Title']);
@@ -120,7 +114,6 @@ $app->get('/test', function($req, $res, $next) {
 #### `Using` function will call $next() automatically
 
 ```php
-<?php
 $app->using(function($req, $res) {
 	$res->contentType('text/plain');
 	$res->set('X-Custom-Header', 'test');
@@ -134,7 +127,6 @@ $app->using(function($req, $res) {
 #### With specific method
 
 ```php
-<?php
 class A {
 	function b($req, $res) {...}
 }
@@ -146,7 +138,6 @@ $app->get('/', 'A@b');
 #### Handle a controller
 
 ```php
-<?php
 class MyController {
 	function getUser($req, $res) {...}
 
@@ -200,7 +191,7 @@ Set value in app container
 #### render(string $view, array $data)
 Render a view
 
- - `$res->render("user.html", ["title" => "User"])` // In template we can use: `<title><?=$title?></title>`
+ - `$res->render("user.html", ["title" => "User"]);` In template we can use: `<title><?=$title?></title>`
 
 
 
@@ -226,9 +217,9 @@ Get a specific header
 - `$req->header(...);` alias
 
 #### param(string $name)
-Return if exists (in order) $req->params->$name or $req->body->$name or $req->query->$name
+Return if exists (in order) $req->params->$name, $req->body->$name or $req->query->$name
 
- - `$req->param('str')`
+ - `$req->param('str');`
  - `$req(...);` alias
 
 #### is(string $type)
@@ -255,6 +246,9 @@ Send output buffer
 Send output buffer and force json content-type
 
  - `$res->json("{ user: 'Mario' }");`
+
+#### ssend([int $status], string $message)
+Same as *send* but encode special html chars
 
 #### redirect([int $status], string $url)
 Redirect client to specific url
