@@ -298,18 +298,28 @@ class Request {
 	}
 
 	/**
+	 * Check if Rewrite engine is active (if script.php is detected)
+	 *
+	 * @return bool If rewrite engine is active
+	 */
+	public static function isRewriteActive() {
+		$exp = explode($_SERVER['SCRIPT_NAME'], $_SERVER['REQUEST_URI'], 2);
+
+		return !isset($exp[1]);
+	}
+
+	/**
 	 * Get relative URI from the root
 	 *
 	 * @return string
 	 */
 	public static function getRelativeURIToRoot($moreSlash = 0) {
 		$postUrl = static::getURI();
-		// echo $postUrl;
 		$postUrl = str_replace(array('//', '\\'), '/', $postUrl);
+
 		$slashNb = substr_count($postUrl, '/');
 		// echo $slashNb;
-
-		return str_repeat('../', max($slashNb + $moreSlash - 1, 0));
+		return str_repeat('../', max($slashNb + $moreSlash - (int)static::isRewriteActive(), 0));
 	}
 
 }
