@@ -3,6 +3,7 @@
 	"description": "Via is a simple and scalable router inspired by expressjs",
 	"version": "0.1.0",
 	"keywords": ["router", "via"],
+	"homepage": "https://github.com/BafS/Via",
 	"authors": [
 		{
 			"name": "Fabien Sa",
@@ -15,6 +16,7 @@
         }
 	},
 	"require": {
+		"php": ">=5.3.0"
 	},
 	"require-dev": {
 		"rmccue/requests": "dev-master",
