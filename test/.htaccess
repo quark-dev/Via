@@ -1,0 +1,5 @@
+# Apache
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . ./rewriteEngine.php [L]

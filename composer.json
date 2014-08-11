@@ -1,0 +1,20 @@
+{
+	"name": "bafs/via",
+	"authors": [
+		{
+			"name": "Fabien Sa",
+			"email": "fabacrans@gmail.com"
+		}
+	],
+	"autoload": {
+        "psr-4": {
+            "Via\\": "src/"
+        }
+	},
+	"require": {
+	},
+	"require-dev": {
+		"rmccue/requests": "dev-master",
+		"bafs/testify": "dev-master"
+	}
+}
