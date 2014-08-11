@@ -8,10 +8,10 @@ This is the very first version, use with caution !
 
  * PHP 5.3+
  * (optional) URL rewriting
+ * [Composer](https://getcomposer.org/).
 
 
 ### Installation with composer
-If composer is not installed [download Composer](https://getcomposer.org/).
 
  * `composer require bafs/via dev-master`
  * `composer install`
@@ -230,6 +230,8 @@ Check if mime type is in header
 #### [static] getRelativeURIToRoot()
 Return path relative to root (eg. useful for assets in views)
 
+#### [static] isRewriteActive()
+Check if rewrite engine is active (rewrite can be enable but no active !)
 
 
 ## Response
