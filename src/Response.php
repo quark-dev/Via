@@ -278,6 +278,23 @@ class Response {
 	}
 
 	/**
+	 * Secure send
+	 * Same as `send` but encode special chars
+	 *
+	 * @see send
+	 */
+	public function ssend($message) {
+		$message = htmlspecialchars($message);
+
+		if(2 === func_num_args()) {
+			$arg1 = func_get_arg(1);
+			return $this->send($message, $arg1);
+		} else {
+			return $this->send($message);
+		}
+	}
+
+	/**
 	 * Render a view
 	 *
 	 * @param string $view
