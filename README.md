@@ -11,8 +11,10 @@ This is the very first version, use with caution !
 
 
 ### Installation with composer
+If you composer is not installed [download Composer](https://getcomposer.org/)
 
- * `composer install via`
+ * `composer require bafs/via dev-master`
+ * `composer install`
 
 
 
@@ -182,7 +184,7 @@ Set value in app container
 #### render(string $view, array $data)
 Render a view
 
- - `$res->render("user.html", ["title" => "User"])` // In template we can use: <title><?=$title?></title>
+ - `$res->render("user.html", ["title" => "User"])` // In template we can use: `<title><?=$title?></title>`
 
 
 
