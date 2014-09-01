@@ -4,6 +4,7 @@ Via is a simple and scalable router inspired by [express](http://expressjs.com/)
 
 This is the very first version, use with caution !
 
+
 ### Needed
 
  * PHP 5.3+
@@ -16,6 +17,14 @@ This is the very first version, use with caution !
  * `composer require bafs/via dev-master`
  * `composer install`
 
+---
+
+* [Using Via](#using-via)
+* [Advanced usage](#advance-usage)
+* [Documentation](#documentation)
+   * [Router](#router-app)
+   * [Request](#request)
+   * [Response](#response)
 
 
 ## Using Via
