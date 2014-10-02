@@ -186,11 +186,15 @@ class Request {
 		if(!empty($matches)) {
 			$params = new \StdClass;
 			$i = 0;
+			$j = 0;
 			foreach ($matches as $key => $value) {
 				if(!is_int($key)) {
 					$params->$key = $value;
 					array_shift($matches);
 				} else {
+					// Stock full match
+					$params->{"__{$j}"} = $value;
+					++$j;
 
 					// Re explode /
 					if(strlen($value) > 1) {
