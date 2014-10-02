@@ -160,6 +160,16 @@ $app->get('/test/@@', 'MyController');
 ```
 
 
+#### With regular expression
+
+```php
+// GET /reg/F00D will print "F00D"
+$app->get('R/reg/([0-9A-F]+)', function($req, $res, $next) {
+	$res($req(0));
+});
+```
+
+
 ---
 
 
