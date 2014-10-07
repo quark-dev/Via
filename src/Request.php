@@ -87,14 +87,19 @@ class Request {
 			$scriptName = $_SERVER['SCRIPT_NAME'];
 		}
 
+		// URL
 		if(isset($_SERVER['REQUEST_URI'])) {
-			$this->url = implode(explode($scriptName, $_SERVER['REQUEST_URI'], 2));
 
-			// if rewriteEngine
-			if(isset($_SERVER['REDIRECT_URL'])) {
-				$root = dirname($_SERVER['SCRIPT_NAME']);
-				$len = strlen($root);
-				$this->url = substr($this->url, $len);
+			$requestUri = $_SERVER['REQUEST_URI'];
+
+			$scriptNameLen = strlen($scriptName);
+			if(substr($requestUri, 0, $scriptNameLen) === $scriptName) {
+				// url rewrite is OFF
+				$this->url = substr($requestUri, $scriptNameLen);
+			} else {
+				//url rewrite is ON
+				$base = dirname($scriptName);
+				$this->url = substr($requestUri, strlen($base));
 			}
 		} else {
 			$this->url = '/';
