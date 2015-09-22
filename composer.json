@@ -1,7 +1,7 @@
 {
 	"name": "bafs/via",
 	"description": "Via is a simple and scalable router inspired by expressjs",
-	"version": "0.1.0",
+	"license": "MIT",
 	"keywords": ["router", "via"],
 	"homepage": "https://github.com/BafS/Via",
 	"authors": [
@@ -11,9 +11,9 @@
 		}
 	],
 	"autoload": {
-        "psr-4": {
-            "Via\\": "src/"
-        }
+		"psr-4": {
+			"Via\\": "src/"
+		}
 	},
 	"require": {
 		"php": ">=5.3.0"
