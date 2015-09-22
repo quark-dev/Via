@@ -168,7 +168,7 @@ class Response {
 			header('Location: ' . $url, true, $status);
 		}
 
-		exit;
+		return;
 	}
 
 	/**
