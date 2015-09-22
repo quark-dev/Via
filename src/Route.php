@@ -137,16 +137,6 @@ class Route implements RoutableInterface {
 	}
 
 	/**
-	 * Matches callback for respond function
-	 *
-	 * @param array Matches
-	 * @return string Regexp with group(s)
-	 */
-	private function matchesCallback($m) {
-		return '(?P<' . $m[1] . '>[^/]+?)?';
-	}
-
-	/**
 	 * Get path
 	 *
 	 * @return string Path
