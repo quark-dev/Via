@@ -6,7 +6,7 @@ namespace Via;
  * Request
  *
  * @author Fabien Sa
- * @version 0.1.0
+ * @version 0.1.1
  * @package Via
  */
 class Request {
@@ -100,6 +100,7 @@ class Request {
 				//url rewrite is ON
 				$base = dirname($scriptName);
 				$this->url = substr($requestUri, strlen($base));
+				$this->url = '/' . ltrim($this->url, '/');
 			}
 		} else {
 			$this->url = '/';
