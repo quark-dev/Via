@@ -1,5 +1,10 @@
 # Via
 
+![PHP 5.3+](https://img.shields.io/badge/PHP-5.3+-brightgreen.svg?style=flat-square)
+![version](https://img.shields.io/packagist/v/bafs/via.svg?style=flat-square)
+![license](https://img.shields.io/packagist/l/bafs/via.svg?style=flat-square)
+
+
 Via is a simple and scalable router inspired by [express](http://expressjs.com/).
 
 This is the very first version, use with caution !
@@ -313,3 +318,6 @@ Set header parameters
 #### render(string $view, array $data)
 Alias of render in "Router"
 
+## Dev
+
+To run the tests, go to the test folder, edit URL constant (run.php line 10) and run `php run.php`.
